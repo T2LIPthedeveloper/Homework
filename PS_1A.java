@@ -30,13 +30,29 @@ public class PS_1A {
     }
 
     public static String fibonacci( int n ) {
-            if (n == 0) {
-                return "0";
-            }
+            String result = new String();
+
             if (n == 1) {
-                return "1";
+                result = "0";
             }
-            String result = fibonacci(n-1) + "," + fibonacci(n-2);
+            else if (n == 2) {
+                result = "0, 1";
+            }
+            else if (n >= 3) {
+                int a = 0;
+                int b = 1;
+                int c;
+                result = "0, 1, ";
+                for (int i = 2; i < n; i++) {
+                    c = a + b;
+                    a = b;
+                    b = c;
+                    result += Integer.toString(c) + ", ";
+                }
+                result = result.trim().substring(0, result.length() - 2);
+            }
+
+
             return result;
     }
 
