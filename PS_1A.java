@@ -9,6 +9,7 @@ public class PS_1A {
             MyRectangle2D m = new MyRectangle2D();
             MyRectangle2D n = new MyRectangle2D(1, 2, 4, 5);
             System.out.println(m.contains(n));
+            System.out.println(PS_1A.fibonacci(10));
             //Week 2
 
 
@@ -28,6 +29,17 @@ public class PS_1A {
         return 1;
     }
 
+    public static String fibonacci( int n ) {
+            if (n == 0) {
+                return "0";
+            }
+            if (n == 1) {
+                return "1";
+            }
+            String result = fibonacci(n-1) + "," + fibonacci(n-2);
+            return result;
+    }
+
     public static int iteratorAdd(List<Integer> integers) {
         int sum = 0;
         Iterator<Integer> it = integers.iterator(); 
@@ -44,7 +56,6 @@ public class PS_1A {
         }
         return sum;
     }
-
 }
 
 /*
