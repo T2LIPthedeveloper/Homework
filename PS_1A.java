@@ -30,31 +30,20 @@ public class PS_1A {
     }
 
     public static String fibonacci( int n ) {
-            String result = new String();
-
+            ArrayList<Integer> arr = new ArrayList<>();
             if (n == 1) {
-                result = "0";
+                arr.add(0);
             }
-            else if (n == 2) {
-                result = "0, 1";
-            }
-            else if (n >= 3) {
-                int a = 0;
-                int b = 1;
-                int c;
-                result = "0, 1, ";
+            else {
+                arr.add(0);
+                arr.add(1);
                 for (int i = 2; i < n; i++) {
-                    c = a + b;
-                    a = b;
-                    b = c;
-                    result += Integer.toString(c) + ", ";
+                    arr.add(arr.get(i-1) + arr.get(i-2));
                 }
-                result = result.trim().substring(0, result.length() - 2);
             }
-
-
-            return result;
-    }
+            String s = arr.toString();
+            return s.substring(1, s.length()-1).replace(" ","");
+        }
 
     public static int iteratorAdd(List<Integer> integers) {
         int sum = 0;

@@ -16,9 +16,14 @@ public class Pset1 {
     }
     
     public static boolean isPermutation(String sIn1, String sIn2) {
-        if (sIn1.length() != sIn2.length())
-            return false;
-        
+        char[] a = sIn1.toCharArray();
+        char[] b = sIn2.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i])
+                return false;
+        }
         return true;
     }
 }
