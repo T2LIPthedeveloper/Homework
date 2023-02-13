@@ -20,6 +20,20 @@ public class WordFinder {
     public static Map<String, Integer> getSubstrings(String haystack,
                                                      String[] needles) { 
         // TODO: Implement (Problem e)
-        return new HashMap<String, Integer>();
+        Map<String, Integer> needlesFound = new HashMap<String, Integer>();
+    		for (String needle : needles) {
+    			//get length of needle
+    			int l = needle.length();
+    			//check each l-tad of haystack for equality with needle 
+    			//and record index in HashMap
+    			for (int i = 0; i < haystack.length()-l+1 ; i++ ) {
+    				if (haystack.substring(i,i+l).equals(needle)) 
+    					//System.out.println("hi");
+    					needlesFound.put(needle, i);
+   
+    			}
+    			
+    		}
+        return needlesFound;
     }
 }

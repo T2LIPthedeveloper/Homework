@@ -28,6 +28,8 @@ public class PianoMachine {
     public void beginNote(Pitch rawPitch) {
     	midi.beginNote(new Pitch(0).toMidiFrequency());
     	//TODO implement for question 1
+        
+
 
     }
     

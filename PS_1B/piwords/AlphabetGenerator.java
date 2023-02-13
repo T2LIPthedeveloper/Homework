@@ -53,6 +53,38 @@ public class AlphabetGenerator {
     public static char[] generateFrequencyAlphabet(int base,
                                                    String[] trainingData) {
         // TODO: Implement (Problem f)
-        return null;
+        if (base < 0) return null;
+        int[] charCount = new int[26];
+        for (int i = 0; i < 26; i++) {
+            charCount[i] = 0;
+        }
+        int total = 0;
+        for (String s : trainingData) {
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) >= 'a' && s.charAt(i) <= 'z') {
+                    charCount[s.charAt(i) - 'a']++;
+                    total++;
+                }
+            }
+        }
+        double[] charProbability = new double[26];
+        for (int i = 0; i < 26; i++) {
+            charProbability[i] = (double) charCount[i] / total;
+        }
+        double[] charCDF = new double[26];
+        charCDF[0] = charProbability[0];
+        for (int i = 1; i < 26; i++) {
+            charCDF[i] = charCDF[i - 1] + charProbability[i];
+        }
+        char[] op = new char[base];
+        for (int i = 0; i < base; i++) {
+            for (int j = 0; j < 26; j++) {
+                if (charCDF[j] * base > i) {
+                    op[i] = (char) ('a' + j);
+                    break;
+                }
+            }
+        }
+        return op;
     }
 }

@@ -19,7 +19,7 @@ public class PiGenerator {
         for (int i = 0; i < precision; i++) {
             ints[i] = piDigit(i+1);
         }
-        return new int[0];
+        return ints;
     }
 
     /**
@@ -34,10 +34,8 @@ public class PiGenerator {
      */
     public static int powerMod(int a, int b, int m) {
         // TODO: Implement (Problem a)
-        if (!(a < 0 || b < 0 || m <= 0))
-            return ((a^b) % m);
-        else
-            return -1;
+        if (a < 0 || b < 0 || m <= 0) return -1;
+        return (int) (Math.pow(a, b) % m);
     }
     
     /**

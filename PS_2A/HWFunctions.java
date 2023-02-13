@@ -1,3 +1,4 @@
+package PS_2A;
 
 
 public class HWFunctions {
@@ -16,5 +17,13 @@ public class HWFunctions {
         }
         else
             return false;
+    }
+
+    public static String tstException(int idx, String[] y) {
+        try {
+            return y[idx];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return "Out of Bounds";
+        }
     }
 }
