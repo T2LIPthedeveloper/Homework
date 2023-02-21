@@ -8,12 +8,12 @@ public class HWFunctions {
         System.out.println(hw.isPalindrome("abbab"));
     }
 
-    public  boolean isPalindrome(String s) {
-        if (s.length() == 1 || (s.length() == 2 && s.charAt(0) == s.charAt(1))) {
+    public static boolean isPalindrome(char[] S) {
+        if (S.length == 1 || (S.length == 2 && S[0] == S[1])) {
             return true;
         }
-        else if (s.charAt(0) == s.charAt(s.length() - 1)) {
-            return isPalindrome(s.substring(1, s.length()-2));
+        else if (S[0] == S[S.length - 1]) {
+            return isPalindrome((S.toString().substring(1, S.length-2)).toCharArray());
         }
         else
             return false;
