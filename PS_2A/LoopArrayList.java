@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class LoopArrayList {
     public static Double sumList(ArrayList<Double> doubleArrayList){
         double sum = 0;

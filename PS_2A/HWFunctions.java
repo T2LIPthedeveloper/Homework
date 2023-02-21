@@ -1,11 +1,11 @@
-package PS_2A;
+
 
 
 public class HWFunctions {
     public static void main(String[] args) {
         HWFunctions hw = new HWFunctions();
-        System.out.println(hw.isPalindrome("abba"));
-        System.out.println(hw.isPalindrome("abbab"));
+        System.out.println(HWFunctions.isPalindrome("abba".toCharArray()));
+        System.out.println(HWFunctions.isPalindrome("abbab".toCharArray()));
     }
 
     public static boolean isPalindrome(char[] S) {
