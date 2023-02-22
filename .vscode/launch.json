@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch HWFunctions",
+            "request": "launch",
+            "mainClass": "HWFunctions",
+            "projectName": "Homework_eb9ea178"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestObserver",
+            "request": "launch",
+            "mainClass": "TestObserver",
+            "projectName": "Homework_eb9ea178"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestRobot",
+            "request": "launch",
+            "mainClass": "TestRobot",
+            "projectName": "Homework_eb9ea178"
+        },
+        {
+            "type": "java",
             "name": "Launch TestPermutation",
             "request": "launch",
             "mainClass": "TestPermutation",

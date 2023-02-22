@@ -1,22 +1,23 @@
-
-
+import java.util.Arrays;
 
 public class HWFunctions {
     public static void main(String[] args) {
         HWFunctions hw = new HWFunctions();
         System.out.println(HWFunctions.isPalindrome("abba".toCharArray()));
         System.out.println(HWFunctions.isPalindrome("abbab".toCharArray()));
+        System.out.println(HWFunctions.isPalindrome("adbcba".toCharArray()));
+        System.out.println(HWFunctions.isPalindrome("ZZaZZ".toCharArray()));
+        System.out.println(HWFunctions.isPalindrome("123421".toCharArray()));
+        
     }
 
     public static boolean isPalindrome(char[] S) {
-        if (S.length == 1 || (S.length == 2 && S[0] == S[1])) {
+        //recursive
+        if (S.length == 0 || S.length == 1)
             return true;
-        }
-        else if (S[0] == S[S.length - 1]) {
-            return isPalindrome((S.toString().substring(1, S.length-2)).toCharArray());
-        }
-        else
-            return false;
+        if (S[0] == S[S.length - 1])
+            return isPalindrome(Arrays.copyOfRange(S, 1, S.length - 1));
+        return false;
     }
 
     public static String tstException(int idx, String[] y) {
