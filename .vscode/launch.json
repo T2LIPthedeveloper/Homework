@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TestPermutation",
+            "request": "launch",
+            "mainClass": "TestPermutation",
+            "projectName": "Homework_eb9ea178"
+        },
+        {
+            "type": "java",
             "name": "Launch TestException",
             "request": "launch",
             "mainClass": "PS_2A.TestException",
