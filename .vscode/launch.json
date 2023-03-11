@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Midi",
+            "request": "launch",
+            "mainClass": "midi.Midi",
+            "projectName": "Homework_eb9ea178"
+        },
+        {
+            "type": "java",
+            "name": "TestPiano",
+            "request": "launch",
+            "mainClass": "piano.TestPiano",
+            "projectName": "Homework_eb9ea178"
+        },
+        {
+            "type": "java",
             "name": "Launch HWFunctions",
             "request": "launch",
             "mainClass": "HWFunctions",
