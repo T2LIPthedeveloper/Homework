@@ -1,6 +1,7 @@
 package piano;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -20,6 +21,7 @@ public class PianoMachine {
     //enum allows for different state changes to be tracked
     private List<NoteEvent> eventList;
     //list of events
+    private List<Pitch> noteStack = new ArrayList<Pitch>();
 
     private final int max_oct_shift = 2;
     // max range
@@ -53,8 +55,10 @@ public class PianoMachine {
         if (this.currState == PossibleStates.playback) {
             return;
         }
-
-        midi.beginNote(currPitch.toMidiFrequency(), this.instrument);
+        if (!noteStack.contains(rawPitch)) {
+            midi.beginNote(currPitch.toMidiFrequency(), this.instrument);
+            noteStack.add(rawPitch);
+        }
 
         if (this.currState == PossibleStates.recording) {
             NoteEvent event = new NoteEvent(currPitch, System.currentTimeMillis(), instrument, NoteEvent.Kind.start);
@@ -73,7 +77,10 @@ public class PianoMachine {
             return;
         }
 
-        midi.endNote(currPitch.toMidiFrequency(), this.instrument);
+        if (noteStack.contains(rawPitch)) {
+            midi.endNote(currPitch.toMidiFrequency(), this.instrument);
+            noteStack.remove(rawPitch);
+        }
 
         if (this.currState == PossibleStates.recording) {
             NoteEvent event = new NoteEvent(currPitch, System.currentTimeMillis(), instrument, NoteEvent.Kind.stop);
