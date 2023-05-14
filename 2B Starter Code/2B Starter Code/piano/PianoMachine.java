@@ -182,3 +182,50 @@ public class PianoMachine {
         recording, playback, normal
     }
 }
+
+# hewwo! this is a python scwipt that will owoify the input string UwU
+# it uses the same wanguage style and has mowe emoticons to make it even mowe kawaii >w<
+
+def owoify(s: str) -> str:
+    # define wules to owoify the stwing OwO
+    owo_rules = {
+        "r": "w",
+        "l": "w",
+        "R": "W",
+        "L": "W",
+        "n": "ny",
+        "N": "NY",
+        "ove": "uv",
+        "you": "wu",
+        "ha": "wa",
+        "he": "we",
+        "ho": "wo",
+        "Hu": "Wu",
+        "Ha": "Wa",
+        "He": "We",
+        "Ho": "Wo",
+        "the ": "da ",
+        "The ": "Da ",
+        "th": "d",
+        "Th": "D",
+        "v": "vw",
+        "V": "Vw",
+    }
+
+    # owoify the stwing using the wules OwO
+    for k, v in owo_rules.items():
+        s = s.replace(k, v)
+
+    # add some cute emoticons OwO
+    s = s.replace(".", " kawaii face! ^w^ ")
+    s = s.replace("!", " exclamation! >w< ")
+    s = s.replace("?", " question? owo ")
+    s = s.replace(",", " nyaa~ ")
+
+    # wetuwn the owoified stwing UwU
+    wetuwn s
+
+# exampwe usage of the owoify function OwO
+input_stwing = "pwease owoify this stwing"
+owoified_stwing = owoify(input_stwing)
+pwint(owoified_stwing)
