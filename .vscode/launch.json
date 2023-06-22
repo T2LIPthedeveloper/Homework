@@ -6,6 +6,139 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DiningPhilFixed2",
+            "request": "launch",
+            "mainClass": "solutions.Q7.DiningPhilFixed2",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "DiningPhilFixed1",
+            "request": "launch",
+            "mainClass": "solutions.Q7.DiningPhilFixed1",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "ExperimentFix2",
+            "request": "launch",
+            "mainClass": "solutions.Q6.ExperimentFix2",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "ExperimentFix1",
+            "request": "launch",
+            "mainClass": "solutions.Q6.ExperimentFix1",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "DiningPhilDemo",
+            "request": "launch",
+            "mainClass": "solutions.Q5.DiningPhilDemo",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "BufferExampleFixed",
+            "request": "launch",
+            "mainClass": "solutions.Q4.BufferExampleFixed",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "LockStaticVariablesFixed",
+            "request": "launch",
+            "mainClass": "solutions.Q3.LockStaticVariablesFixed",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "FactorThread",
+            "request": "launch",
+            "mainClass": "solutions.Q2.FactorThread",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "FactorThreadNoInterrupt",
+            "request": "launch",
+            "mainClass": "solutions.Q1.FactorThreadNoInterrupt",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "DiningPhilFixed1",
+            "request": "launch",
+            "mainClass": "solutions.DiningPhilFixed1",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "ExperimentFix2",
+            "request": "launch",
+            "mainClass": "ExperimentFix2",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "Experiment",
+            "request": "launch",
+            "mainClass": "Experiment",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "ExperimentFix1",
+            "request": "launch",
+            "mainClass": "ExperimentFix1",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "DiningPhilDemo",
+            "request": "launch",
+            "mainClass": "DiningPhilDemo",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "BufferExample",
+            "request": "launch",
+            "mainClass": "BufferExample",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "BufferExampleFixed",
+            "request": "launch",
+            "mainClass": "BufferExampleFixed",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "LockStaticVariablesFixed",
+            "request": "launch",
+            "mainClass": "LockStaticVariablesFixed",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "FactorThread",
+            "request": "launch",
+            "mainClass": "FactorThread",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
+            "name": "FactorThreadNoInterrupt",
+            "request": "launch",
+            "mainClass": "FactorThreadNoInterrupt",
+            "projectName": "TestProgram"
+        },
+        {
+            "type": "java",
             "name": "Midi",
             "request": "launch",
             "mainClass": "midi.Midi",
