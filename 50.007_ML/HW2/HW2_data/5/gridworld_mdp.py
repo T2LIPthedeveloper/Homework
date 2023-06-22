@@ -27,7 +27,7 @@ class simpleprob1():
 
 
 
-    self.actions=['stay','left','down','right','up']
+    self.actions=['stay','right','down','left','up']
     self.actdict2index=dict()
     for i,a in enumerate(self.actions):
       self.actdict2index[a]=i
