@@ -24,6 +24,8 @@ function handleSendButtonClick() {
             var res = xhr.responseText;
             var json = JSON.parse(res);
             // TODO: fixme
+            json.push({code: code.value});
+            update_deptsregion(json);
         }
     }; 
     // cosntructing a HTTP POST request

@@ -127,6 +127,8 @@ function Staff() {
 
     useEffect( () => {
         // TODO: fixme:
+        // call initDepts() here
+        initDepts();
     }, []);
 
     return (

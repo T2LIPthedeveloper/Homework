@@ -42,7 +42,14 @@ function DeptList({depts}) {
         );
     }
     return (        
-        <div></div> // TODO: fixme
+        <div>
+            <table>
+                <tbody>
+                    <tr><th>Department Code</th></tr>
+                    {rows}
+                </tbody>
+            </table>
+        </div> // TODO: fixme
     )
 }
 
