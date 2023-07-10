@@ -33,19 +33,21 @@ function handleSendButtonClick() {
     var code  = document.getElementById("code");
     var xhr = new XMLHttpRequest();
     // TODO: fixme
-    // the idea is to add a staff to the list of staffs
-    // in the current page
-    // use the name and code to create a new staff
-    // and add it to the list of staffs
-    xhr.onreadystatechange = function() {
+    
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             var res = xhr.responseText;
             var json = JSON.parse(res);
-            json.push({name: name.value, code: code.value});
-            update_staffsregion(json);
+            update_staffsregion(json); // Call the update_staffsregion function to update the staff list
         }
     };
-
+    // Constructing an HTTP POST request
+    var params = `name=${name.value}&code=${code.value}`;
+    xhr.open('POST', `/staff/submit/`, true);
+    // Send the proper header information along with the request
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
+    
 }
 
 /**

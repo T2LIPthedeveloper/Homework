@@ -128,6 +128,7 @@ function Staff() {
     useEffect( () => {
         // TODO: fixme:
         // call initDepts() here
+        // if component mounts for the first time
         initDepts();
     }, []);
 
