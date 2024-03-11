@@ -22,20 +22,46 @@ typedef struct {
 
 /*
     Initialize the FSM before running an input string.
-    Simply set the state attribute to ???.
+    Simply set the state attribute to int number 0 i.e. STATE_0.
 */
 void initFSM(FSM *fsm) {
-    fsm->currentState = ???;
+    fsm->currentState = STATE_0;
 }
 
 /* Process a single character and update the FSM according to FSM transition logic. */
 void processInput(FSM *fsm, char input) {
-    ???
+    switch (fsm->currentState) {
+        case STATE_0:
+            if (input == '0') {
+                fsm->currentState = STATE_0;
+            } else if (input == '1') {
+                fsm->currentState = STATE_1;
+            }
+            break;
+        case STATE_1:
+            if (input == '0') {
+                fsm->currentState = STATE_2;
+            } else if (input == '1') {
+                fsm->currentState = STATE_0;
+            }
+            break;
+        case STATE_2:
+            if (input == '0') {
+                fsm->currentState = STATE_1;
+            } else if (input == '1') {
+                fsm->currentState = STATE_2;
+            }
+            break;
+    }
 }
 
 /* Function to check if the binary number in string *binary is a multiple of 3 */
 int isMultipleOf3(FSM fsm, char *binary) {
-	???
+    int i;
+    for (i = 0; binary[i] != '\0'; i++) {
+        processInput(&fsm, binary[i]);
+    }
+    return fsm.currentState == STATE_0;
 }
 
 int main() {
@@ -49,17 +75,19 @@ int main() {
     initFSM(&fsm);
     
 	/* Test case 1 run */
-    if (isMultipleOf3(fsm, binaryNumber))
+    if (isMultipleOf3(fsm, binaryNumber)) {
         printf("The binary number %s is a multiple of 3.\n", binaryNumber);
-    else
+    }
+    else {
         printf("The binary number %s is not a multiple of 3.\n", binaryNumber);
-	
+    }
 	/* Test case 2 run, remember to reset the FSM. */
 	initFSM(&fsm);
-    if (isMultipleOf3(fsm, binaryNumber2))
-        printf("The binary number %s is a multiple of 3.\n", binaryNumber);
-    else
-        printf("The binary number %s is not a multiple of 3.\n", binaryNumber);
-    
+    if (isMultipleOf3(fsm, binaryNumber2)) {
+        printf("The binary number %s is a multiple of 3.\n", binaryNumber2);
+    }
+    else {
+        printf("The binary number %s is not a multiple of 3.\n", binaryNumber2);
+    }
     return 0;
 }

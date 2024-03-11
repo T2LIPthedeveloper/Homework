@@ -1,13 +1,18 @@
 #include <stdio.h>
 
+/* Regex = "^a(b|c)d*$" */
 /* Define New Enum for Combined FSM */
 typedef enum {
-    ???
+    INITIAL_STATE_COMBINED,
+    ACCEPTING_STATE_COMBINED
 } CombinedState;
 
 /* Define Combined FSM Struct, as in previous tasks.  */
 typedef struct {
-    ???
+    CombinedState currentState;
+    char firstLetter;
+    char secondLetter;
+    char thirdLetter;
 } CombinedFSM;
 
 /* 
@@ -15,12 +20,33 @@ typedef struct {
     - For simplicity, we will not be storing letters ('a', 'b', 'c' and 'd') in attributes.
 */
 void initCombinedFSM(CombinedFSM *combinedFsm) {
-    ???
+    combinedFsm->currentState = INITIAL_STATE_COMBINED;
 }
 
 /* Process given input_char for the Combined FSM.  */
 void processCharCombined(CombinedFSM *combinedFsm, char input_char) {
-    ???
+    switch (combinedFsm->currentState) {
+        case INITIAL_STATE_COMBINED:
+            if (input_char == 'a' && combinedFsm->currentState == INITIAL_STATE_COMBINED) {
+                combinedFsm->currentState = INITIAL_STATE_COMBINED;
+            } else if (input_char == 'b' && combinedFsm->currentState == INITIAL_STATE_COMBINED) {
+                combinedFsm->currentState = ACCEPTING_STATE_COMBINED;
+            } else if (input_char == 'c' && combinedFsm->currentState == INITIAL_STATE_COMBINED) {
+                combinedFsm->currentState = ACCEPTING_STATE_COMBINED;
+            } else if (input_char == 'd' && combinedFsm->currentState == ACCEPTING_STATE_COMBINED) {
+                combinedFsm->currentState = ACCEPTING_STATE_COMBINED;
+            } else {
+                combinedFsm->currentState = INITIAL_STATE_COMBINED;
+            }
+            break;
+        case ACCEPTING_STATE_COMBINED:
+            if (input_char == 'd') {
+                combinedFsm->currentState = ACCEPTING_STATE_COMBINED;
+            } else {
+                combinedFsm->currentState = INITIAL_STATE_COMBINED;
+            }
+            break;
+    }
 }
 
 /* 
@@ -30,7 +56,11 @@ void processCharCombined(CombinedFSM *combinedFsm, char input_char) {
     - Return true if the FSM is in correct accepting state.
  */
 int runRegexCombined(CombinedFSM *combinedFsm, const char *str) {
-    ???
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        processCharCombined(combinedFsm, str[i]);
+    }
+    return combinedFsm->currentState == ACCEPTING_STATE_COMBINED;
 }
 
 int main() {

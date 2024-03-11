@@ -9,7 +9,8 @@ typedef enum {
 
 /* Define the FSM states for concatenated RegEx FSM */
 typedef enum {
-    ???
+    INITIAL_STATE_CONCAT,
+    ACCEPTING_STATE_CONCAT
 } ConcatState;
 
 /* Define the FSM struct with an added field for the letter, as in Task 2. */
@@ -38,13 +39,13 @@ void initFSM(FSM *fsm, char letter) {
 
 /* 
     Initialize the ConcatFSM with two FSM objects.
-    - Set initial state as ???.
+    - Set initial state as INITIAL_STATE_CONCAT.
     - Fetch targetLetter attributes from both FSMs and assign correctly to ConcatFSM attributes.
 */
 void initConcatFSM(ConcatFSM *concatFsm, FSM *fsm1, FSM *fsm2) {
-    concatFsm->currentState = ???;
-    concatFsm->firstLetter = ???;
-    concatFsm->secondLetter = ???;
+    concatFsm->currentState = INITIAL_STATE_CONCAT;
+    concatFsm->firstLetter = fsm1->targetLetter;
+    concatFsm->secondLetter = fsm2->targetLetter;
 }
 
 /* 
@@ -52,12 +53,27 @@ void initConcatFSM(ConcatFSM *concatFsm, FSM *fsm1, FSM *fsm2) {
     - Implements the correct transition logic for our FSM.
 */
 void processCharConcat(ConcatFSM *concatFsm, char input_char) {
-    ???
+    switch (concatFsm->currentState) {
+        case INITIAL_STATE_CONCAT:
+            if (input_char == concatFsm->firstLetter) {
+                concatFsm->currentState = ACCEPTING_STATE_CONCAT;
+            }
+            break;
+        case ACCEPTING_STATE_CONCAT:
+            if (input_char == concatFsm->secondLetter) {
+                concatFsm->currentState = ACCEPTING_STATE_CONCAT;
+            }
+            break;
+    }
 }
 
 /* Run the concatenated FSM for entire input string. */
 int runRegexConcat(ConcatFSM *concatFsm, const char *str) {
-    ???
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        processCharConcat(concatFsm, str[i]);
+    }
+    return concatFsm->currentState == ACCEPTING_STATE_CONCAT;
 }
 
 int main() {

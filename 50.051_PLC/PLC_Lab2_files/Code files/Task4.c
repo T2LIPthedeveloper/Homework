@@ -12,7 +12,8 @@ typedef enum {
     - CHOICE_ACCEPTING_STATE: After finding the first choice letter or the second choice letter, accepting state.
 */
 typedef enum {
-    ???
+    CHOICE_INITIAL_STATE,
+    CHOICE_ACCEPTING_STATE
 } ChoiceState;
 
 /* Define the FSM struct with an added field for the letter, as in Task 2. */
@@ -45,9 +46,9 @@ void initFSM(FSM *fsm, char letter) {
     - Fetch targetLetter attributes from both FSMs and assign correctly to ConcatFSM attributes.
 */
 void initChoiceFSM(ChoiceFSM *choiceFsm, FSM *fsm1, FSM *fsm2) {
-    choiceFsm->currentState = ???;
-    choiceFsm->firstChoice = ???;
-    choiceFsm->secondChoice = ???;
+    choiceFsm->currentState = CHOICE_INITIAL_STATE;
+    choiceFsm->firstChoice = fsm1->targetLetter;
+    choiceFsm->secondChoice = fsm2->targetLetter;
 }
 
 /* 
@@ -55,12 +56,24 @@ void initChoiceFSM(ChoiceFSM *choiceFsm, FSM *fsm1, FSM *fsm2) {
     - Implements the correct transition logic for our FSM.
 */
 void processCharChoice(ChoiceFSM *choiceFsm, char input_char) {
-    ???
+    switch (choiceFsm->currentState) {
+        case CHOICE_INITIAL_STATE:
+            if (input_char == choiceFsm->firstChoice || input_char == choiceFsm->secondChoice) {
+                choiceFsm->currentState = CHOICE_ACCEPTING_STATE;
+            }
+            break;
+        case CHOICE_ACCEPTING_STATE:
+            break;
+    }
 }
 
 /* Run the choice FSM for entire input string. */
 int runRegexChoice(ChoiceFSM *choiceFsm, const char *str) {
-    ???
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        processCharChoice(choiceFsm, str[i]);
+    }
+    return choiceFsm->currentState == CHOICE_ACCEPTING_STATE;
 }
 
 int main() {

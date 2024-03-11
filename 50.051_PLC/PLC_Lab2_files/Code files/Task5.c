@@ -12,7 +12,8 @@ typedef enum {
     - KLEENE_REJECTING_STATE: Rejecting state, if another character than target letter is seen.
  */
 typedef enum {
-    ??? 
+    KLEENE_INITIAL_STATE,
+    KLEENE_REJECTING_STATE
 } KleeneState;
 
 /* Define the FSM struct with an added field for the letter, as in Task 2.  */
@@ -43,8 +44,8 @@ void initFSM(FSM *fsm, char letter) {
     - Fetch targetLetter attribute for the KleeneFSM as the same one as in the single character FSM.
 */
 void initKleeneFSM(KleeneFSM *kleeneFsm, FSM *fsm) {
-    kleeneFsm->currentState = ???;
-    kleeneFsm->targetLetter = ???;
+    kleeneFsm->currentState = KLEENE_INITIAL_STATE;
+    kleeneFsm->targetLetter = fsm->targetLetter;
 }
 
 /* 
@@ -52,12 +53,26 @@ void initKleeneFSM(KleeneFSM *kleeneFsm, FSM *fsm) {
     - Implements the correct transition logic for our FSM.
 */
 void processCharKleene(KleeneFSM *kleeneFsm, char input_char) {
-    ???
+    switch (kleeneFsm->currentState) {
+        case KLEENE_INITIAL_STATE:
+            if (input_char == kleeneFsm->targetLetter) {
+                kleeneFsm->currentState = KLEENE_INITIAL_STATE;
+            } else {
+                kleeneFsm->currentState = KLEENE_REJECTING_STATE;
+            }
+            break;
+        case KLEENE_REJECTING_STATE:
+            break;
+    }
 }
 
 /* Run the Kleene FSM for entire input string. */
 int runRegexKleene(KleeneFSM *kleeneFsm, const char *str) {
-    ???
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        processCharKleene(kleeneFsm, str[i]);
+    }
+    return kleeneFsm->currentState == KLEENE_INITIAL_STATE;
 }
 
 int main() {
@@ -76,34 +91,42 @@ int main() {
     initKleeneFSM(&kleeneFsm, &fsm);
 	
 	/* Test case 1. */
-    if (runRegexKleene(&kleeneFsm, testString1))
+    if (runRegexKleene(&kleeneFsm, testString1)) {
         printf("The string \"%s\" matches '^a*$'.\n", testString1);
-    else
+    }
+    else {
         printf("The string \"%s\" does not match '^a*$'.\n", testString1);
+    }
 	
 	/* Test case 2. */
 	/* Remember to reset the FSM. */
 	initKleeneFSM(&kleeneFsm, &fsm);
-    if (runRegexKleene(&kleeneFsm, testString2))
+    if (runRegexKleene(&kleeneFsm, testString2)) {
         printf("The string \"%s\" matches '^a*$'.\n", testString2);
-    else
+    }
+    else {
         printf("The string \"%s\" does not match '^a*$'.\n", testString2);
+    }
 	
 	/* Test case 3. */
 	/* Remember to reset the FSM. */
 	initKleeneFSM(&kleeneFsm, &fsm);
-    if (runRegexKleene(&kleeneFsm, testString3))
+    if (runRegexKleene(&kleeneFsm, testString3)) {
         printf("The string \"%s\" matches '^a*$'.\n", testString3);
-    else
+    }
+    else {
         printf("The string \"%s\" does not match '^a*$'.\n", testString3);
+    }
 
     /* Test case 4. */
 	/* Remember to reset the FSM. */
 	initKleeneFSM(&kleeneFsm, &fsm);
-	if (runRegexKleene(&kleeneFsm, testString4))
+	if (runRegexKleene(&kleeneFsm, testString4)) {
         printf("The string \"%s\" matches '^a*$'.\n", testString4);
-    else
+    }
+    else {
         printf("The string \"%s\" does not match '^a*$'.\n", testString4);
+    }
 
     return 0;
 }
