@@ -69,7 +69,7 @@ int main() {
     CombinedFSM combinedFsm;
 	
 	/* Some test strings, including the empty string.  */
-    char *testStrings[] = {"a", "abd", "acd", "aad", "abdd", "ac", "abcd", "abda", NULL};
+    char *testStrings[] = {"a", "abd", "acd", "aad", "abdd", "ac", "abcd", "abda", "bcd", NULL};
 	int i;
     int matches;
 	/* Run test cases and reset FSM each time. */
