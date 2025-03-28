@@ -1,0 +1,12 @@
+Error: memory error: out of bound pointer
+File: 2A.c
+Line: 17
+assembly.ll line: 49
+State: 1
+Stack: 
+	#000000049 in test_unit(p=0, x=symbolic) at 2A.c:17
+	#100000088 in main() at 2A.c:26
+Info: 
+	address: 139925625114648
+	next: object at 139489685934080 of size 4
+		MO18[4] allocated at main():  %x = alloca i32, align 4
